@@ -3,7 +3,6 @@ import "./Orders.css";
 import Order from "../Order/Order";
 
 const Orders = (props) => {
-  console.log(props)
   const orderElements = props.orders.map((order) => (
     <Order
       name={order.name}
@@ -14,9 +13,9 @@ const Orders = (props) => {
   ));
 
   return (
-    <>
+    <div className="order-container">
     {orderElements}
-    </>
+    </div>
   )
 };
 

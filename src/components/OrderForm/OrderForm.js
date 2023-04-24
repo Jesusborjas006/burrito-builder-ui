@@ -33,10 +33,11 @@ class OrderForm extends Component {
         id: Date.now(),
         ...this.state,
       };
-      // this.props.newOrderFunc(newOrder);
+
+      this.props.newOrderFunc(newOrder);
       this.clearInputs();
-    } else {
-      <h2>Must complete form</h2>;
+    } else if (this.state.name && !this.state.ingredients.length) {
+      alert("You must add ingredients to your order");
     }
   };
 
@@ -60,10 +61,10 @@ class OrderForm extends Component {
       "sour cream",
     ];
 
-    console.log(this.state.ingredients);
     const ingredientButtons = possibleIngredients.map((ingredient) => {
       return (
         <button
+          className="ingredient-btn"
           key={ingredient}
           name={ingredient}
           value={ingredient}
@@ -92,7 +93,9 @@ class OrderForm extends Component {
             Order: {this.state.ingredients.join(", ") || "Nothing selected"}
           </p>
 
-          <button onClick={(e) => this.handleSubmit(e)}>Submit Order</button>
+          <button className="submit-btn" onClick={(e) => this.handleSubmit(e)}>
+            Submit Order
+          </button>
         </form>
       </>
     );

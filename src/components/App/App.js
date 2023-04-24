@@ -6,12 +6,10 @@ import OrderForm from "../../components/OrderForm/OrderForm";
 
 const App = () => {
   const [orders, setOrders] = useState([]);
-  // console.log(orders);
 
   useEffect(() => {
     getOrders()
       .then((data) => {
-        console.log(data);
         return setOrders(data.orders);
       })
       .catch((err) => console.error("Error fetching:", err));
@@ -38,7 +36,7 @@ const App = () => {
         <OrderForm newOrderFunc={postOrder} />
       </header>
 
-      {!orders.length ? <p>No orders yet!</p> : <Orders orders={orders} />}
+      {!orders.length ? <p className="no-orders-text">No orders yet!</p> : <Orders orders={orders} />}
     </main>
   );
 };
