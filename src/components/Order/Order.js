@@ -7,7 +7,7 @@ const Order = (props) => {
         <h3>{props.name}</h3>
         <ul className="ingredient-list">
           {props.ingredients.map((ingredient) => (
-            <li>{ingredient}</li>
+            <li key={ingredient}>{ingredient}</li>
           ))}
         </ul>
       </div>
