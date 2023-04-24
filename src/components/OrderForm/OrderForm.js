@@ -19,19 +19,25 @@ class OrderForm extends Component {
     console.log("Ingredient Name", event.target.name);
     console.log("Value", event.target.value);
     this.setState({
-      [event.target.ingredients]: this.state.ingredients.push(event.target.value),
+      [event.target.ingredients]: this.state.ingredients.push(
+        event.target.value
+      ),
     });
   };
 
   handleSubmit = (e) => {
     console.log("Submitted");
-    e.preventDefault();
-    const newOrder = {
-      id: Date.now(),
-      ...this.state,
-    };
-    this.props.newOrderFunc(newOrder);
-    this.clearInputs();
+    if (this.state.name && this.state.ingredients.length >= 1) {
+      e.preventDefault();
+      const newOrder = {
+        id: Date.now(),
+        ...this.state,
+      };
+      this.props.newOrderFunc(newOrder);
+      this.clearInputs();
+    } else {
+      <h2>Must complete form</h2>;
+    }
   };
 
   clearInputs = () => {
@@ -62,6 +68,7 @@ class OrderForm extends Component {
           name={ingredient}
           value={ingredient}
           onClick={(e) => this.handleIngredientChange(e)}
+          required
         >
           {ingredient}
         </button>
@@ -77,6 +84,7 @@ class OrderForm extends Component {
             name="name"
             value={this.state.name}
             onChange={(event) => this.handleNameChange(event)}
+            required
           />
           {ingredientButtons}
 
@@ -86,7 +94,6 @@ class OrderForm extends Component {
 
           <button onClick={(e) => this.handleSubmit(e)}>Submit Order</button>
         </form>
-        <h1>{this.state.ingredients}</h1>
       </>
     );
   }
