@@ -33,7 +33,7 @@ class OrderForm extends Component {
         id: Date.now(),
         ...this.state,
       };
-      this.props.newOrderFunc(newOrder);
+      // this.props.newOrderFunc(newOrder);
       this.clearInputs();
     } else {
       <h2>Must complete form</h2>;
