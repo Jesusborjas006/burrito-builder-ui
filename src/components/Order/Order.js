@@ -1,6 +1,5 @@
 const Order = (props) => {
-  console.log(props);
-  console.log(props.ingredients.map((ingredient) => ingredient));
+
   return (
     <>
       <div className="order">

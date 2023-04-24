@@ -6,12 +6,12 @@ import OrderForm from "../../components/OrderForm/OrderForm";
 
 const App = () => {
   const [orders, setOrders] = useState([]);
-  console.log(orders);
+  // console.log(orders);
 
   useEffect(() => {
     getOrders()
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         return setOrders(data.orders);
       })
       .catch((err) => console.error("Error fetching:", err));
