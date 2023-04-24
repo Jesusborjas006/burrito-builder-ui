@@ -16,8 +16,6 @@ class OrderForm extends Component {
 
   handleIngredientChange = (event) => {
     event.preventDefault();
-    console.log("Ingredient Name", event.target.name);
-    console.log("Value", event.target.value);
     this.setState({
       [event.target.ingredients]: this.state.ingredients.push(
         event.target.value
@@ -26,7 +24,6 @@ class OrderForm extends Component {
   };
 
   handleSubmit = (e) => {
-    console.log("Submitted");
     if (this.state.name && this.state.ingredients.length >= 1) {
       e.preventDefault();
       const newOrder = {
