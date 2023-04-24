@@ -17,15 +17,25 @@ const App = () => {
       .catch((err) => console.error("Error fetching:", err));
   }, []);
 
-  const addNewOrder = (newOrder) => {
-    setOrders([...orders, newOrder]);
+  const postOrder = (newOrder) => {
+    fetch("http://localhost:3001/api/v1/orders", {
+      method: "POST",
+      body: JSON.stringify(newOrder),
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data)
+        return setOrders([...orders, data]);
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
     <main className="App">
       <header>
         <h1>Burrito Builder</h1>
-        <OrderForm newOrderFunc={addNewOrder} />
+        <OrderForm newOrderFunc={postOrder} />
       </header>
 
       {!orders.length ? <p>No orders yet!</p> : <Orders orders={orders} />}
