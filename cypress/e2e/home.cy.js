@@ -21,6 +21,7 @@ describe("Should test all content being shown to user", () => {
     cy.get(".order-container").get(".order").eq(1).children().eq(1).contains("jalapeno")
 
     cy.get(".order-container").get(".order").eq(2).contains("John")
+    cy.get(".order-container").get(".order").eq(2).contains("sofritas")
   });
 
   it("Should display a form container with different inputs", () => {
