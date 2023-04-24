@@ -24,14 +24,9 @@ const App = () => {
         <OrderForm />
       </header>
 
-      <Orders orders={orders} />
+      {!orders.length ? <p>No orders yet!</p> : <Orders orders={orders} />}
     </main>
   );
 };
-
-//   componentDidMount() {
-//     getOrders()
-//       .catch(err => console.error('Error fetching:', err));
-//   }
 
 export default App;
