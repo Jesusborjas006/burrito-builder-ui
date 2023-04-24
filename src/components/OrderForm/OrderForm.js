@@ -15,7 +15,14 @@ class OrderForm extends Component {
   };
 
   handleSubmit = (e) => {
+    console.log("Submitted");
     e.preventDefault();
+    const newOrder = {
+      id: Date.now(),
+      ...this.state,
+    };
+    this.props.newOrderFunc(newOrder);
+
     this.clearInputs();
   };
 
